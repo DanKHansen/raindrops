@@ -6,5 +6,4 @@ object Raindrops:
         if factors._2 == 0 then "Plang" else "",
         if factors._3 == 0 then "Plong" else ""
       ).mkString
-
       if sounds.isEmpty then n.toString else sounds
