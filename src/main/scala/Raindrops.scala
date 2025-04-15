@@ -1,12 +1,10 @@
 object Raindrops:
    def convert(n: Int): String =
-      val factors: (Int, Int, Int) = (n % 3, n % 5, n % 7)
-      factors match
-         case (0, i, j) if i != 0 & j != 0 => "Pling"
-         case (i, 0, j) if i != 0 & j != 0 => "Plang"
-         case (i, j, 0) if i != 0 & j != 0 => "Plong"
-         case (0, 0, i) if i != 0          => "PlingPlang"
-         case (0, i, 0) if i != 0          => "PlingPlong"
-         case (i, 0, 0) if i != 0          => "PlangPlong"
-         case (0, 0, 0)                    => "PlingPlangPlong"
-         case _                            => n.toString
+      val factors = (n % 3, n % 5, n % 7)
+      val sounds = Seq(
+        if factors._1 == 0 then "Pling" else "",
+        if factors._2 == 0 then "Plang" else "",
+        if factors._3 == 0 then "Plong" else ""
+      ).mkString
+
+      if sounds.isEmpty then n.toString else sounds
